@@ -12,11 +12,13 @@ import {
   InitialScreen,
   HostScreen,
   VisitorScreen,
+  ProfileScreen,
 } from './screens';
 
 const AppStack = createDrawerNavigator(
   {
     List: ListScreen,
+    Profile: ProfileScreen,
     Detail: DetailScreen,
     Host: HostScreen,
     Visitor: VisitorScreen,
