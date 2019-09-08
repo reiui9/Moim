@@ -4,3 +4,4 @@ export VisitorScreen from './VisitorScreen';
 export HostScreen from './HostScreen';
 export AuthLoadingScreen from './AuthLoadingScreen';
 export InitialScreen from './InitialScreen';
+export ProfileScreen from './ProfileScreen';
