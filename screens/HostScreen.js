@@ -42,7 +42,7 @@ export default class HostScreen extends React.Component {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 14, backgroundColor: '#e0e0e1'}}>
+        <View style={{flex: 20, backgroundColor: '#e0e0e1'}}>
           <View style={styles.listContainer}>
             <Text>HOST SCREEN</Text>
           </View>
