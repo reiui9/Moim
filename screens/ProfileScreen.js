@@ -31,7 +31,7 @@ export default class ProfileScreen extends React.Component {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 15, backgroundColor: '#e0e0e1'}}>
+        <View style={{flex: 19, backgroundColor: '#e0e0e1'}}>
           <View style={styles.Container}>
             <View style={styles.basic}>
               <Text style={styles.level}>Level 5</Text>
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
   },
   buttonName: {
     marginTop: 5,
+    textAlign: 'center',
     fontSize: 10,
   },
   Container: {

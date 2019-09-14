@@ -18,10 +18,10 @@ import {
 const AppStack = createDrawerNavigator(
   {
     List: ListScreen,
-    Profile: ProfileScreen,
     Detail: DetailScreen,
     Host: HostScreen,
     Visitor: VisitorScreen,
+    Profile: ProfileScreen,
   },
   {
     hideStatusBar: true,
