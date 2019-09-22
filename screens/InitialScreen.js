@@ -1,6 +1,30 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  Alert,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+import {NaverLogin} from 'react-native-naver-login';
+
+// TODO: sample initial 추후에 앱 등록하고 바꿔야함.
+
+const dooboolabInitials = {
+  kConsumerKey: 'VN6WKGFQ3pJ0xBXRtlN9',
+  kConsumerSecret: 'AHBgzH9ZkM',
+  kServiceAppName: 'dooboolab',
+  kServiceAppUrlScheme: 'dooboolaburlscheme', // only for iOS
+};
+
+const naverInitials = {
+  kConsumerKey: 'jyvqXeaVOVmV',
+  kConsumerSecret: '527300A0_COq1_XV33cf',
+  kServiceAppName: '네이버 아이디로 로그인하기',
+  kServiceAppUrlScheme: 'thirdparty20samplegame', // only for iOS
+};
 
 export default class SignInScreen extends React.Component {
   render() {
@@ -40,6 +64,12 @@ export default class SignInScreen extends React.Component {
                 <Text style={styles.buttonText}>페이스북으로 로그인</Text>
               </View>
             </TouchableOpacity>
+            <TouchableOpacity onPress={this._signInNaver}>
+              <Image
+                style={styles.signInButton}
+                source={require('../static/naver-id-login.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -50,12 +80,37 @@ export default class SignInScreen extends React.Component {
     // await AsyncStorage.setItem('userToken', 'abc');
     this.props.navigation.navigate('App');
   };
+
+  _signInNaver = () => {
+    NaverLogin.login(dooboolabInitials, (err, accessToken) => {
+      if (err) {
+        console.debug(`NaverLogin Error: ${err}`);
+        // eslint-disable-next-line prettier/prettier
+        Alert.alert(
+          '로그인 실패',
+          '네이버 아이디로 로그인에 실패하였습니다.',
+          // eslint-disable-next-line prettier/prettier
+          [{text: '확인'}],
+        );
+        return;
+      }
+      console.debug('Login succeeded');
+      console.debug(`accessToken: ${accessToken}`);
+      this.props.navigation.navigate('App');
+    });
+  };
 }
 
 const styles = StyleSheet.create({
   buttonsContainer: {
     paddingTop: 10,
     alignItems: 'center',
+  },
+  signInButton: {
+    marginBottom: 30,
+    height: 55,
+    width: 260,
+    resizeMode: 'stretch',
   },
   kakaoButton: {
     marginBottom: 30,
